@@ -1,0 +1,64 @@
+﻿@model AppWeb.Areas.Cadastro.ViewModel.ProdutoPostViewModel
+
+@{
+    ViewData["Title"] = "Cadastrar";
+}
+<h4>Cadastrar Produto</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form id="formCriarProdutos" asp-controller="Produtos" asp-action="Criar" class="submit-press-enter" method="post" >
+        @Html.AntiForgeryToken()    
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="col-md-4 margin-top-md">
+                    <div class="form-group">
+                        <label asp-for="Nome" class="control-label">
+                            @Html.DisplayNameFor(model => model.Nome)
+                        </label>
+                        <input id="Nome" name="Nome" asp-for="Nome" class="form-control inputUpper" />
+                        <span asp-validation-for="Nome" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3 margin-top-md">
+                    <div class="form-group">
+                        <label asp-for="Preco" class="control-label">
+                            @Html.DisplayNameFor(model => model.Preco)
+                        </label>
+                        <input id="Preco" name="Preco" asp-for="Preco" class="form-control ValoresItens" />
+                        <span asp-validation-for="Preco" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-3 margin-top-md">
+                    <div class="form-group">
+                        <label asp-for="PromocaoID" class="control-label">
+                            @Html.DisplayNameFor(model => model.PromocaoID)
+                        </label>
+                        <input id="PromocaoID" name="PromocaoID" asp-for="PromocaoID" class="form-control" />
+                        <span asp-validation-for="PromocaoID" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+<hr />
+<div class="row">
+
+    <div class="col-md-12 text-center">
+        <button type="button" class="btn btn-outline-danger padraoButtonDuzentos" onclick="FecharModal()">
+            <span><i class="fas fa-ban"></i></span> Cancelar
+        </button>
+        <button type="button" class="btn btn-outline-info padraoButtonDuzentos" onclick="CriarProduto('formCriarProdutos')">
+            <span><i class="fas fa-save"></i></span> Cadastrar
+        </button>
+
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

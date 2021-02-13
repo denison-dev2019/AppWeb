@@ -1,0 +1,55 @@
+﻿@model IEnumerable<AppWeb.Areas.Cadastro.ViewModel.ProdutoGetViewModel>
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Index";
+}
+
+<h1>
+    Produtos
+</h1>
+
+<table class="table .table-striped">
+    <thead>
+        <tr>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Preco)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Promocao.Descricao)
+            </th>
+            <th>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr scope="row">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Preco)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Promocao.Descricao)
+                </td>
+                <td>
+                    <span onclick="alert('clicou')" data-toggle="tooltip" data-placement="right" title="Adicionar ao Carrinho">
+                        <i class="fas fa-cart-plus text-success cursorLink"></i>
+                    </span>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

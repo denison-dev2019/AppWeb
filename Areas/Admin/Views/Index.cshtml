@@ -1,0 +1,54 @@
+﻿@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Amdin";
+}
+
+<center>
+    <div class="row col-lg-12">
+        <h1>Bem vindo à Área Administrativa de nosso Shop</h1>
+    </div>
+
+    <div class="row col-lg-12">
+
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Produtos</h5>
+                    <p class="card-text">
+                        <button onclick="LoadFormProduto()" class="btn btn-outline-info padraoButtonPerc">Cadastrar</button>
+                        <br><br>
+                        @Html.ActionLink("Listar", "listar", "produtos", new { Area = "cadastros" }, new { @class = "btn btn-outline-info padraoButtonPerc" })
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Clientes</h5>
+                    <p class="card-text">
+                        <button type="button" class="btn btn-outline-info padraoButtonPerc">Cadastrar</button>
+                        <br><br>
+                        <button type="button" class="btn btn-outline-info padraoButtonPerc">Listar</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Promoções</h5>
+                    <p class="card-text">
+                        <button type="button" class="btn btn-outline-info padraoButtonPerc">Cadastrar</button>
+                        <br><br>
+                        <button type="button" class="btn btn-outline-info padraoButtonPerc">Listar</button>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</center>
+<script type="text/javascript" src="~/js/Areas/Cadastros/Produtos/Index.js"></script>
+
