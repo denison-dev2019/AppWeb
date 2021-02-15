@@ -1,0 +1,122 @@
+﻿@model AppWeb.Areas.Venda.ViewModel.PedidoGetViewModel
+@using AppWeb.Util.Enuns
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Detalhe";
+}
+<div class="row col-sm-12">
+    <h4>Pedido @Html.DisplayNameFor(model => model.Id)  @Html.DisplayFor(model => model.Id)</h4>
+
+    <table class="col-sm-12">
+
+        <thead>
+            <tr class="row col-sm-12">
+                <th class="col-sm-1 text-right">
+                    @Html.DisplayNameFor(model => model.Cliente.Nome)
+                </th>
+                <td class="col-sm-3 text-left">
+                    <input asp-for="Cliente.Nome" value="@Model.Cliente.Nome" readonly class="border-0">
+                </td>
+                <th class="col-sm-1 text-right">
+                    @Html.DisplayNameFor(model => model.Cliente.Cep)
+                </th>
+                <td class="col-sm-2 text-left">
+                    <input class="text-center border-0" asp-for="Cliente.Cep" value="@Model.Cliente.Cep" readonly >
+                </td>
+            </tr>
+        </thead>
+        
+    </table>
+</div>
+<hr />
+<h5>Itens do pedido </h5>
+<hr />
+<div class="row col-sm-12">
+    
+
+    <table class="" >
+
+        <thead>
+            <tr class= "">
+                <th class="col-md-2 text-center">
+                    @Html.DisplayNameFor(model => model.PedidoItens.FirstOrDefault().Produto.Nome)
+                </th>
+                <th class="col-md-2 text-center">
+                    @Html.DisplayNameFor(model => model.PedidoItens.FirstOrDefault().Produto.Promocao)
+                </th>
+                <th class="col-md-1 text-center">
+                    @Html.DisplayNameFor(model => model.PedidoItens.FirstOrDefault().QuantidadeProduto)
+                </th>
+                <th class="col-md-2 text-center">
+                    @Html.DisplayNameFor(model => model.PedidoItens.FirstOrDefault().ValorUnitarioProduto)
+                </th>
+                <th class="col-md-3 text-center">
+                    @Html.DisplayNameFor(model => model.PedidoItens.FirstOrDefault().ValorTotalProduto)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.PedidoItens)
+            {
+                <tr class="">
+                    <td class="col-md-2 text-left">
+                        <input asp-for="@item.Produto.Nome" value="@item.Produto.Nome" readonly class="border-0">
+                    </td>
+                    <td class="col-md-2 text-center">
+                        <input asp-for="@item.Produto.Promocao.Descricao" value="@item.Produto.Promocao.Descricao" class="">
+                    </td>
+                    <td class="col-md-1 text-center">
+                        <input asp-for="@item.QuantidadeProduto" value="@item.QuantidadeProduto"  class="text-center">
+                    </td>
+                    <td class="col-md-2 text-right">
+                        <input asp-for="@item.ValorUnitarioProduto" value="@item.ValorUnitarioProduto" readonly class="border-0">
+                    </td>
+                    <td class="col-md-3 text-right">
+                        <input asp-for="@item.ValorTotalProduto" value="@item.ValorTotalProduto" readonly class="border-0">
+                    </td>
+
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<hr />
+<div class="row col-md-12">
+    <h5>Total</h5>    
+    <table class="">
+            <tr class="">
+                <th class="col-md-1 text-right">
+                    @Html.DisplayNameFor(model => model.Valor)
+                </th>
+                <td class="col-md-2 text-left">
+                    @Html.DisplayFor(model => model.Valor)
+                </td>
+                <th class="col-md-1 text-right">
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <td class="col-md-2 text-left">
+                    @Html.DisplayFor(model => model.Status)
+                </td>
+                <th class="col-md-3 text-right">
+                    @Html.DisplayNameFor(model => model.FormaPagamento)
+                </th>
+                <td class="col-md-3 text-left">
+                    <select asp-for="FormaPagamento" asp-items="Html.GetEnumSelectList<EnumFormaPagamento>()">
+                    </select>
+                </td>
+            </tr>
+        
+    </table>
+</div>
+<hr />
+
+<br>
+<br>
+<br>
+<br>
+<div class="text-center">
+    <a class="col-sm-2 btn btn-success padraoButtonPerc" asp-area="" asp-controller="produtos" asp-action="listar">Continuar Comprando</a>
+    <a class="col-sm-2 btn btn-info padraoButtonPerc" asp-area="" asp-controller="produtos" asp-action="listar">Finalizar Pedido</a>
+</div>
+<script type="text/javascript" src="~/js/Areas/Vendas/Pedidos/Editar.js"></script>

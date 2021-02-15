@@ -1,0 +1,109 @@
+﻿@model AppWeb.Areas.Venda.ViewModel.PedidoGetViewModel
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Detalhe";
+}
+
+<div class="row col-sm-12">
+    <h3>Detalhamento do Pedido @Html.DisplayNameFor(model => model.Id)  @Html.DisplayFor(model => model.Id)</h3>
+    <hr />
+    <table class="col-sm-12">
+        <thead>
+            <tr class="row col-sm-12">
+                <th class="col-sm-2 text-center">
+                    @Html.DisplayNameFor(model => model.Valor)
+                </th>
+                <th class="col-sm-2 text-center">
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th class="col-sm-3 text-center">
+                    @Html.DisplayNameFor(model => model.FormaPagamento)
+                </th>
+                <th class="col-sm-3 text-center">
+                    @Html.DisplayNameFor(model => model.Cliente.Cep)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr class="row col-sm-12">
+                    <td class="col-sm-2 text-right">
+                        @Html.DisplayFor(model => model.Valor)
+                    </td>
+                    <td class="col-sm-2 text-center">
+                        @Html.DisplayFor(model => model.Status)
+                    </td>
+                    <td class="col-sm-3 text-center">
+                        @Html.DisplayFor(model => model.FormaPagamento)
+                    </td>
+                    <td class="col-sm-3 text-center">
+                        @Html.DisplayFor(model => model.Cliente.Cep)
+                    </td>
+                </tr>
+            
+        </tbody>
+    </table>
+</div>
+<hr />
+<div class="row col-sm-12">
+    <h4>Itens do Pedido</h4>
+
+    <table class="col-sm-12">
+
+        <thead>
+            <tr class="row col-sm-12">
+                <th class="col-sm-3 text-center">
+                    @Html.DisplayNameFor(model => model.PedidoItens.FirstOrDefault().Produto.Nome)
+                </th>
+                <th class="col-sm-2 text-center">
+                    @Html.DisplayNameFor(model => model.PedidoItens.FirstOrDefault().Produto.Promocao)
+                </th>
+                <th class="col-sm-1 text-center">
+                    @Html.DisplayNameFor(model => model.PedidoItens.FirstOrDefault().QuantidadeProduto)
+                </th>
+                <th class="col-sm-3 text-center">
+                    @Html.DisplayNameFor(model => model.PedidoItens.FirstOrDefault().ValorUnitarioProduto)
+                </th>
+                <th class="col-sm-3 text-center">
+                    @Html.DisplayNameFor(model => model.PedidoItens.FirstOrDefault().ValorTotalProduto)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.PedidoItens)
+            {
+            <tr class="row col-sm-12">
+                <td class="col-sm-3 text-center">
+                    @item.Produto.Nome
+                </td>
+                <td class="col-sm-2 text-center">
+                    @item.Produto.Promocao.Descricao
+                </td>
+                <td class="col-sm-1 text-center">
+                    @item.QuantidadeProduto
+                </td>
+                <td class="col-sm-3 text-center">
+                    @item.ValorUnitarioProduto
+                </td>
+                <td class="col-sm-3 text-center">
+                    @item.ValorTotalProduto
+                </td>
+
+
+            </tr>
+            }
+            </tbody>
+    </table>
+</div>
+<br>
+<br>
+<br>
+<br>
+<div>
+    @Html.ActionLink("Alterar", "Editar", "venda/pedidos/alterar", new { Model.Id })
+    <a class="nav-link text-dark" asp-area="" asp-controller="pedidos" asp-action="editar">
+        Editar
+    </a>
+    <a class="col-sm-2 btn btn-success padraoButtonPerc" asp-area="" asp-controller="produtos" asp-action="listar">Continuar Comprando</a>
+</div>

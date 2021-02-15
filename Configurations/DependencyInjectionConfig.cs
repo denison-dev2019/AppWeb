@@ -1,7 +1,9 @@
 ﻿using AppWeb.Servicos.Client.Cadastro;
 using AppWeb.Servicos.Client.Notificador;
+using AppWeb.Servicos.Client.Venda;
 using AppWeb.Servicos.Interface.Cadastro;
 using AppWeb.Servicos.Interface.Notificador;
+using AppWeb.Servicos.Interface.Venda;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,6 +26,7 @@ namespace AppWeb.Configurations
             services.AddScoped<IProdutoServico, ProdutoService>();
             services.AddScoped<IProdutoServico, ProdutoService>();
             services.AddScoped<IPromocaoServico, PromocaoServico>();
+            services.AddScoped<IPedidoServico, PedidoServico>();
 
             return services;
         }

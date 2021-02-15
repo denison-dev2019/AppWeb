@@ -22,17 +22,11 @@
     <Folder Include="Areas\Aplicacao\Controller\" />
     <Folder Include="Areas\Aplicacao\ViewModel\" />
     <Folder Include="Areas\Aplicacao\View\" />
-    <Folder Include="Areas\Venda\Controller\" />
-    <Folder Include="Areas\Venda\ViewModel\" />
-    <Folder Include="Areas\Venda\View\" />
     <Folder Include="Models\Cadastro\" />
     <Folder Include="Models\Venda\" />
     <Folder Include="Servicos\Client\Aplicacao\" />
     <Folder Include="Servicos\Dtos\Aplicacao\" />
-    <Folder Include="Servicos\Dtos\Venda\" />
     <Folder Include="Servicos\Interface\Aplicacao\" />
-    <Folder Include="Servicos\Interface\Venda\" />
-    <Folder Include="Servicos\Client\Venda\" />
     <Folder Include="Servicos\Validator\Aplicacao\" />
     <Folder Include="Servicos\Validator\Cadastro\" />
     <Folder Include="Servicos\Validator\Venda\" />

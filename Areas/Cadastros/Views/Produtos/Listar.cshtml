@@ -45,7 +45,7 @@
                     @Html.DisplayFor(modelItem => item.Promocao.Descricao)
                 </td>
                 <td>
-                    <span onclick="alert('clicou')" data-toggle="tooltip" data-placement="right" title="Adicionar ao Carrinho">
+                    <span onclick="AddPedidoItem(@item.Id)" data-toggle="tooltip" data-placement="right" title="Adicionar ao Carrinho">
                         <i class="fas fa-cart-plus text-success cursorLink"></i>
                     </span>
                 </td>
@@ -53,3 +53,4 @@
         }
     </tbody>
 </table>
+<script type="text/javascript" src="~/js/Areas/Cadastros/Produtos/Listar.js"></script>

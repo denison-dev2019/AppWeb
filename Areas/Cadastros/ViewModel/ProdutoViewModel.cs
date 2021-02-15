@@ -17,14 +17,14 @@ namespace AppWeb.Areas.Cadastro.ViewModel
     }
     public class ProdutoGetViewModel : ProdutoBaseViewModel
     {
-        [DisplayName("Código")]
+        [DisplayName("Nº")]
         public int Id { get; set; }
         public PromocaoViewModel Promocao { get; set; }
     }
 
     public class ProdutoViewModel : ProdutoBaseViewModel
     {
-        [DisplayName("Código")]
+        [DisplayName("Nº")]
         public int Id { get; set; }
         [DisplayName("Promoção")]
         public int PromocaoID { get; set; }

@@ -27,25 +27,32 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Outros</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="produtos" asp-action="listar">Produtos</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="Venda" asp-controller="Pedidos" asp-action="Listar">
+                                Meus pedidos
+                            </a>
+                        </li>
+
                     </ul>
                 </div>
 
             </div>
             <div class="container col-sm-1 text-right">
                 <a class="nav-link text-dark" asp-area="admin" asp-controller="admin" asp-action="index">
-                <i class="fas fa-user-lock" title="Admin"></i></a>
-                
+                    <i class="fas fa-user-lock" title="Admin"></i>
+                </a>
+
             </div>
             <div class="container col-sm-1">
                 |
             </div>
             <div class="container col-1 text-left">
-                <i class="fas fa-shopping-cart" data-toggle="tooltip" data-placement="top" title="Carrinho de compras"></i>
+                <a class="nav-link text-dark" asp-area="Cadastros" asp-controller="Pedidos" asp-action="Listar">
+                    <i class="fas fa-shopping-cart" data-toggle="tooltip" data-placement="top" title="Carrinho de compras"></i>
+
+                </a>
             </div>
         </nav>
     </header>
@@ -58,7 +65,7 @@
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2021 - SoftShop - <a asp-area="" asp-controller="Home" asp-action="Privacy">Quem Somos</a>
-            
+
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -81,4 +88,5 @@
 </html>
 <script type="text/javascript">
     var virtualPath = '@Url.Content("~/")';
+    var NumeroPedidoGuardado = 0;
 </script>

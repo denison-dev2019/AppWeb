@@ -1,0 +1,56 @@
+﻿@model IEnumerable<AppWeb.Areas.Venda.ViewModel.PedidoGetViewModel>
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Lista";
+}
+
+<h1>Lista</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Valor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cliente)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Valor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cliente)
+                </td>
+                <td>
+                    @Html.ActionLink("Alterar", "Editar", new { item.Id }) |
+                    @Html.ActionLink("Detalhes", "Detalhar", new { item.Id }) |
+                    @Html.ActionLink("Excluir", "Delete", new { item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
