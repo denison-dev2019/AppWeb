@@ -17,7 +17,8 @@
                     <p class="card-text">
                         <button onclick="LoadFormProduto()" class="btn btn-outline-info padraoButtonPerc">Cadastrar</button>
                         <br><br>
-                        @Html.ActionLink("Listar", "listar", "produtos", new { Area = "cadastros" }, new { @class = "btn btn-outline-info padraoButtonPerc" })
+                        
+                        @Html.ActionLink("Listar", "index", "produtos", new { Area = "cadastros" }, new { @class = "btn btn-outline-info padraoButtonPerc" })
                     </p>
                 </div>
             </div>

@@ -23,6 +23,13 @@ namespace AppWeb.Servicos.Dtos.Venda
         public ClienteDTO Cliente { get; set; }
         [DataMember]
         public IEnumerable<PedidoItensDTO> PedidoItens { get; set; }
+        [DataMember]
+        public string CorStatus { get; set; }
+        [DataMember]
+        public DateTime DataPedido { get; set; }
+        [DataMember]
+        public DateTime DataPagamento { get; set; }
+
     }
     
     [DataContract]
@@ -38,5 +45,12 @@ namespace AppWeb.Servicos.Dtos.Venda
         public int ClienteId { get; set; }
         [DataMember]
         public IEnumerable<PedidoItensDTO> PedidoItens { get; set; }
+        [DataMember]
+        public string CorStatus { get; set; }
+        [DataMember]
+        public DateTime DataPedido { get; set; }
+        [DataMember]
+        public DateTime DataPagamento { get; set; }
+
     }
 }

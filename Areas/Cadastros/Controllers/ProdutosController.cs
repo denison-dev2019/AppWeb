@@ -29,9 +29,12 @@ namespace AppWeb.Areas.Cadastros.Controllers
             _acessor = acessor;
         }
 
-        public ActionResult Index()
+        public async Task<ActionResult<IEnumerable<ProdutoGetViewModel>>> Index()
+        
+        
         {
-            return View();
+            var produtos = _mapper.Map<List<ProdutoGetViewModel>>(await _produtoServico.ListarTodos());
+            return View("~/Areas/Cadastros/Views/Produtos/IndexAdmin.cshtml", produtos);
         }
 
         [HttpGet("carregar-formulario")]
@@ -55,7 +58,7 @@ namespace AppWeb.Areas.Cadastros.Controllers
         public async Task<ActionResult<ProdutoGetViewModel>> ListarPorId(int id)
         {
             var produto = _mapper.Map<ProdutoGetViewModel>(await _produtoServico.ListarPorId(id));
-            await MontarListaPromocao(produto.PromocaoID);
+           // await MontarListaPromocao(produto.PromocaoID);
             return View("~/Areas/Cadastros/Views/Produtos/Editar.cshtml", produto);
         }
 

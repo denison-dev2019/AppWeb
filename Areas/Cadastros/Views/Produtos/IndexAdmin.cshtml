@@ -1,0 +1,29 @@
+﻿@model IEnumerable<AppWeb.Areas.Cadastro.ViewModel.ProdutoGetViewModel>
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Index";
+}
+
+<div class="row">
+    <div class="col-8">
+        <h3>
+            Produtos
+        </h3>
+    </div>
+    <div class="col-2">
+        <button onclick="LoadFormProduto()" class="btn btn-outline-success padraoButtonPerc">Novo</button>
+    </div>
+    <div class="col-2">
+        <button onclick="AtualizarLista()" class="btn btn-outline-success padraoButtonPer">Atualizar</button>
+    </div>
+</div>
+<br>
+<br>
+<Partial name="~/Areas/Cadastros/Views/Produtos/ListarAdmin.cshtml" model="@Model" />
+
+<script type="text/javascript" src="~/js/Areas/Admin/Index.js"></script>
+
+
+
+

@@ -18,6 +18,10 @@ namespace AppWeb.Areas.Venda.ViewModel
         public EnumStatusPedido Status { get; set; }
         public int ClienteId { get; set; }
         public IEnumerable<PedidoItensViewModel> PedidoItens { get; set; }
+        [DisplayName("Data Pedido"), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime DataPedido { get; set; }
+        [DisplayName("Data Pagamento"), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime DataPagamento { get; set; }
     }
     public class PedidoGetViewModel
     {
@@ -26,9 +30,19 @@ namespace AppWeb.Areas.Venda.ViewModel
         [DisplayName("Valor"), DisplayFormat(DataFormatString = "{0:N2}")]
         public decimal Valor { get; set; }
         public EnumStatusPedido Status { get; set; }
-        [DisplayName("Forma de pagamento")]
+        [DisplayName("Forma Pagto")]
         public EnumFormaPagamento FormaPagamento { get; set; }
         public ClienteViewModel Cliente { get; set; }
         public IEnumerable<PedidoItensViewModel> PedidoItens { get; set; }
+        public string CorStatus { get; set; }
+        [DisplayName("Data Pedido"), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime DataPedido { get; set; }
+        [DisplayName("Data Pagamento"), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime DataPagamento { get; set; }
+
+
     }
+
+   
 }
+

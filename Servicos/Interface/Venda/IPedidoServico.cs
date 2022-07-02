@@ -15,5 +15,6 @@ namespace AppWeb.Servicos.Interface.Venda
         Task<bool> Remover(int id);
         Task<IEnumerable<PedidoGetDTO>> ListarTodos();
         Task<PedidoGetDTO> ListarPorId(int id);
+        Task<int> GetNovoNumero();
     }
 }

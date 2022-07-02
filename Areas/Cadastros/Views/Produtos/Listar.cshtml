@@ -22,7 +22,13 @@
                 @Html.DisplayNameFor(model => model.Preco)
             </th>
             <th scope="col">
+                @Html.DisplayNameFor(model => model.PercentualVenda)
+            </th>
+            <th scope="col">
                 @Html.DisplayNameFor(model => model.FirstOrDefault().Promocao.Descricao)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.PrecoFinal)
             </th>
             <th>
             </th>
@@ -31,25 +37,31 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr scope="row">
-                <td>
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Preco)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Promocao.Descricao)
-                </td>
-                <td>
-                    <span onclick="AddPedidoItem(@item.Id)" data-toggle="tooltip" data-placement="right" title="Adicionar ao Carrinho">
-                        <i class="fas fa-cart-plus text-success cursorLink"></i>
-                    </span>
-                </td>
-            </tr>
+        <tr scope="row">
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Preco)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PercentualVenda)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Promocao.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrecoFinal)
+            </td>
+            <td>
+                <span onclick="AddPedidoItem(@item.Id)" data-toggle="tooltip" data-placement="right" title="Adicionar ao Carrinho">
+                    <i class="fas fa-cart-plus text-success cursorLink"></i>
+                </span>
+            </td>
+        </tr>
         }
     </tbody>
 </table>

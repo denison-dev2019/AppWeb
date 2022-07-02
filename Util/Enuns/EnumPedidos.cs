@@ -8,8 +8,10 @@ namespace AppWeb.Util.Enuns
     public enum EnumStatusPedido
     {
         Aberto = 0,
-        Cancelado = 1,
-        Finalizado = 2
+        Producao = 1,
+        Cancelado = 2,
+        Finalizado = 3,
+        Entregue = 4
     }
 
     public enum EnumFormaPagamento
@@ -19,5 +21,18 @@ namespace AppWeb.Util.Enuns
         MasterDebito = 2,
         MasterCredito = 3,
         Boleto = 4,
+    }
+
+    public enum EnumStatusEntrega
+    {
+        Produzindo = 0,
+        AguardandoRetirada = 1,
+        Concluido = 2
+    }
+
+    public enum EnumTipoPessoa
+    {
+        PF = 0,
+        PJ = 1,
     }
 }

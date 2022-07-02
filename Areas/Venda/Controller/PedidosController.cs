@@ -1,4 +1,5 @@
-﻿using AppWeb.Areas.Venda.ViewModel;
+﻿using AppWeb.Areas.Cadastros.ViewModel;
+using AppWeb.Areas.Venda.ViewModel;
 using AppWeb.Controllers;
 using AppWeb.Servicos.Dtos.Venda;
 using AppWeb.Servicos.Interface.Cadastro;
@@ -6,6 +7,7 @@ using AppWeb.Servicos.Interface.Venda;
 using AppWeb.Util.Enuns;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,19 +21,25 @@ namespace AppWeb.Areas.Venda.Controller
     {
         private readonly IPedidoServico _pedidoServico;
         private readonly IProdutoServico _produtoServico;
+        private readonly IClienteServico _clienteServico;
         //private readonly IPromocaoServico _promocaoServico;
         public PedidosController(IServiceProvider serviceProvider,
             IPedidoServico pedidoServico,
-            IProdutoServico produtoServico
-            //, IPromocaoServico promocaoServico,
+            IProdutoServico produtoServico,
+            IClienteServico clienteServico
             ) : base(serviceProvider)
         {
             _pedidoServico = pedidoServico;
             _produtoServico = produtoServico;
+            _clienteServico = clienteServico;
         }
-        public ActionResult Index()
+
+        [HttpGet("novo")]
+        public async Task<ActionResult<PedidoGetViewModel>> Index()
         {
-            return View();
+            var numero = await _pedidoServico.GetNovoNumero();
+            await MontarListaCliente();
+            return View("~/Areas/Venda/Views/Pedidos/Index.cshtml", new PedidoGetViewModel { Id = numero });
         }
 
         [HttpGet("{id}")]
@@ -108,12 +116,25 @@ namespace AppWeb.Areas.Venda.Controller
             }
         }
 
-        // GET: PedidoController/Delete/5
-        public ActionResult Delete(int id)
+        [HttpPost, Route("excluir/{id}")]
+        public async Task<ActionResult<bool>> Delete(int id)
         {
-            return View();
+            await _pedidoServico.Remover(id);
+            return ReturnNotification();
         }
 
-        
+        private async Task MontarListaCliente()
+        {
+            @ViewBag.ListagemClientes = _mapper.Map<List<ClienteViewModel>>(
+                    await _clienteServico.ListarTodos())
+                    .Select(p => new SelectListItem()
+                    {
+                        Text = p.Nome,
+                        Value = p.Id.ToString()
+                    })
+                    .ToList();
+        }
+
+
     }
 }

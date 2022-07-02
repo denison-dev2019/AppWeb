@@ -1,0 +1,72 @@
+﻿@model AppWeb.Areas.Venda.ViewModel.PedidoGetViewModel
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Vendas/Pedidos";
+    var dataPedido =  Model.DataPedido == DateTime.MinValue ? DateTime.Today.ToString("dd/MM/yyyy") : Model.DataPedido.ToString("dd/MM/yyyy ");
+}
+
+<h4>Vendas/Pedidos</h4>
+<hr />
+<h6>
+    <span class="text-secondary col-2">Nº</span><span class="text-info"> @Model.Id</span>
+    | <span class="text-secondary col-5">Valor Total</span><span class="text-info"> @Model.Valor.ToString("N2")</span>
+    | <span class="text-secondary col-5">Data</span><span class="text-info"> @dataPedido</span>
+</h6>
+<div class="row  col-md-12">
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="row bg-info">
+            <div class="form-group  col-md-2 ">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" disabled />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-2">
+                <label asp-for="Valor" class="control-label"></label>
+                <input asp-for="Valor" class="form-control" />
+                <span asp-validation-for="Valor" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-2">
+                <label asp-for="Status" class="control-label"></label>
+                <input asp-for="Status" class="form-control" />
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-2">
+                <label asp-for="Cliente.Id" class="control-label"></label>
+                <input asp-for="Cliente.Id" class="form-control" />
+                <span asp-validation-for="Cliente.Id" class="text-danger"></span>
+            </div>
+
+            <div class=" col-md-2">
+                <label asp-for="DataPedido" class="control-label"></label>
+                <input asp-for="DataPedido" class="form-control" />
+                <span asp-validation-for="DataPedido" class="text-danger"></span>
+            </div>
+            <div class="col-md-2">
+                <label asp-for="DataPagamento" class="control-label"></label>
+                <input asp-for="DataPagamento" class="form-control" />
+                <span asp-validation-for="DataPagamento" class="text-danger"></span>
+            </div>
+
+        </div>
+        <div class="row col-md-12 ">
+            
+        </div>
+        <div class="row col-md-12 ">
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </div>
+    </form>
+
+    
+</div>
+
+<div>
+    <a asp-action="Listar" >Voltar à listagem </a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

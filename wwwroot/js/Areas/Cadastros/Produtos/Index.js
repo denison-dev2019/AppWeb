@@ -1,6 +1,8 @@
-﻿function BuscarProduto(id) {
+﻿const prefixo = "produtos"
+
+function BuscarProduto(id) {
     $.ajax({
-        url: `${id}`,
+        url: `${prefixo}/${id}`,
         data: ``,
         type: "GET",
         success: function (xhr) {
@@ -17,8 +19,7 @@
             */
         },
         error: function (xhr) {
-            $('#conteudoModalGenerico').html("Algo deu errado!" + xhr);
-            $('#modalGenerico').modal('show');
+            Notificar(3, 'Ops! Algo deu errado.', 'Motivo' + xhr)
         }
     });
 }
@@ -26,24 +27,30 @@
 function AtualizarProduto(formName) {
     let form = $(`#${formName}`);
     $.ajax({
-        url: `editar`,
+        url: `${prefixo}/editar`,
         data: form.serialize(),
         type: "POST",
         success: function (xhr) {
-            alert('ok')
+            Notificar(1, 'Tudo Certo!', 'Pedido Atualizado com sucesso!');
             FecharModal();
             AtualizarLista();
+            
+            
+            
+            
+           
         },
         error: function (xhr) {
-            alert('nao - ok')
+            Notificar(3, 'Ops! Algo deu errado.', 'Motivo' + xhr)
         }
     });
 }
 
 
 function LoadFormProduto() {
+    
     $.ajax({
-        url: `admin/cadastros/produtos/carregar-formulario`,
+        url: `produtos/carregar-formulario`,
         data: ``,
         type: "GET",
         success: function (xhr) {
@@ -51,29 +58,42 @@ function LoadFormProduto() {
             $('#modalGenerico').modal('show');
         },
         error: function (xhr) {
-            $('#conteudoModalGenerico').html("Algo deu errado!" + xhr);
-            $('#modalGenerico').modal('show');
+            Notificar(3, 'Ops! Algo deu errado.', 'Motivo' + xhr)
         }
     });
 }
 
 
 function AtualizarLista() {
-    window.open(`listar`, "_self");
+    //window.open(`listar`, "_self");
+    
+    $.ajax({
+        url: `${prefixo}/listar`,
+        data: ``,
+        type: "GET",
+        success: function (xhr) {
+            $('#idListagemProdutos').html("");
+            $('#idListagemProdutos').html(xhr);
+           //Notificar(1, 'Tudo Certo!', 'Lista Atualizada com sucesso!');
+        },
+        error: function (xhr) {
+            Notificar(3, 'Ops! Algo deu errado.', 'Motivo' + xhr)
+        }
+    });
 }
 
 function ExcluirProduto(id) {
     var data = { __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val()}
     $.ajax({
-        url: `excluir/${id}`,
+        url: `${prefixo}/excluir/${id}`,
         data: data,
         type: "POST",
         success: function (xhr) {
-            alert('Produto excluído com sucesso')
+            Notificar(1, 'Tudo Certo!', 'Produto Excluído com sucesso!');
             AtualizarLista();
         },
         error: function (xhr) {
-            alert(xhr)
+            Notificar(3, 'Ops! Algo deu errado.', 'Motivo' + xhr)
         }
     });
 }
@@ -82,17 +102,20 @@ function CriarProduto(formName)
 {
     let form = $(`#${formName}`);
     $.ajax({
-        url: `admin/cadastros/produtos/criar`,
+        url: `produtos/criar`,
         data: form.serialize(),
         type: "POST",
         success: function (xhr) {
             FecharModal();
-            alert('Produto cadastrado com sucesso!')
+            AtualizarLista();
+            Notificar(1, 'Tudo Certo!', 'Produto Cadastrado com sucesso!');
             
         },
         error: function (xhr) {
-            $('#conteudoModalGenerico').html("Algo deu errado!" + xhr);
-            $('#modalGenerico').modal('show');
+            Notificar(3, 'Ops! Algo deu errado.', 'Motivo' + xhr)
         }
     });
 }
+
+
+

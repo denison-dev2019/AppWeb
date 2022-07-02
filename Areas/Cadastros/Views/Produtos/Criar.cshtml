@@ -11,7 +11,7 @@
         @Html.AntiForgeryToken()    
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="row">
-                <div class="col-md-4 margin-top-md">
+                <div class="col-md-6 margin-top-md">
                     <div class="form-group">
                         <label asp-for="Nome" class="control-label">
                             @Html.DisplayNameFor(model => model.Nome)
@@ -29,6 +29,15 @@
                         <span asp-validation-for="Preco" class="text-danger"></span>
                     </div>
                 </div>
+                <div class="col-md-3 margin-top-md">
+                    <div class="form-group">
+                        <label asp-for="PercentualVenda" class="control-label">
+                            @Html.DisplayNameFor(model => model.PercentualVenda)
+                        </label>
+                        <input id="PercentualVenda" name="PercentualVenda" asp-for="PercentualVenda" class="form-control ValoresItens" />
+                        <span asp-validation-for="PercentualVenda" class="text-danger"></span>
+                    </div>
+                </div>
 
                 <div class="col-md-3 margin-top-md">
                     <div class="form-group">
@@ -37,6 +46,15 @@
                         </label>
                         <input id="PromocaoID" name="PromocaoID" asp-for="PromocaoID" class="form-control" />
                         <span asp-validation-for="PromocaoID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3 margin-top-md">
+                    <div class="form-group">
+                        <label asp-for="PrecoFinal" class="control-label">
+                            @Html.DisplayNameFor(model => model.PrecoFinal)
+                        </label>
+                        <input id="PrecoFinal" name="PrecoFinal" asp-for="PrecoFinal" class="form-control ValoresItens" />
+                        <span asp-validation-for="PrecoFinal" class="text-danger"></span>
                     </div>
                 </div>
             </div>

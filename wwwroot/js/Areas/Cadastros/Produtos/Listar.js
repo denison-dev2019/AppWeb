@@ -1,6 +1,7 @@
-﻿function BuscarProduto(id) {
+﻿
+function BuscarProduto(id) {
     $.ajax({
-        url: `${id}`,
+        url: `admin/cadastros/produtos/${id}`,
         data: ``,
         type: "GET",
         success: function (xhr) {
@@ -17,8 +18,7 @@
             */
         },
         error: function (xhr) {
-            $('#conteudoModalGenerico').html("Algo deu errado!" + xhr);
-            $('#modalGenerico').modal('show');
+            Notificar(3, 'Ops! Algo deu errado.', 'Motivo' + xhr)
         }
     });
 }
@@ -30,12 +30,13 @@ function AtualizarProduto(formName) {
         data: form.serialize(),
         type: "POST",
         success: function (xhr) {
-            alert('ok')
+            
+            Notificar(1, 'Tudo Certo!', 'Pedido Atualizado com sucesso!')
             FecharModal();
             AtualizarLista();
         },
         error: function (xhr) {
-            alert('nao - ok')
+            Notificar(3, 'Ops! Algo deu errado.', 'Motivo' + xhr)
         }
     });
 }
@@ -51,8 +52,7 @@ function LoadFormProduto() {
             $('#modalGenerico').modal('show');
         },
         error: function (xhr) {
-            $('#conteudoModalGenerico').html("Algo deu errado!" + xhr);
-            $('#modalGenerico').modal('show');
+            Notificar(3, 'Ops! Algo deu errado.', 'Motivo' + xhr)
         }
     });
 }
@@ -69,11 +69,11 @@ function ExcluirProduto(id) {
         data: data,
         type: "POST",
         success: function (xhr) {
-            alert('Produto excluído com sucesso')
+            Notificar(1, 'Tudo Certo!', 'Pedido excluido com sucesso!')
             AtualizarLista();
         },
         error: function (xhr) {
-            alert(xhr)
+            Notificar(3, 'Ops! Algo deu errado.', 'Motivo' + xhr)
         }
     });
 }
@@ -88,12 +88,11 @@ function CriarProduto(formName)
         type: "POST",
         success: function (xhr) {
             FecharModal();
-            alert('Produto cadastrado com sucesso!')
+            Notificar(1, 'Tudo Certo!', 'Pedido cadastrado com sucesso!')
             
         },
         error: function (xhr) {
-            $('#conteudoModalGenerico').html("Algo deu errado!" + xhr);
-            $('#modalGenerico').modal('show');
+            Notificar(3, 'Ops! Algo deu errado.', 'Motivo' + xhr)
         }
     });
 }
@@ -102,7 +101,6 @@ function CriarProduto(formName)
 
 function AddPedidoItem(id) {
 
-    alert(NumeroPedidoGuardado)
 
     var data = JSON.parse('{"Id": 0,"Valor":48.00,"Status":"Aberto","ClienteId": 1,"PedidoItens": [{"ProdutoId": 21, "QuantidadeProduto": 2, "ValorUnitarioProduto": 24.00, "ValorTotalProduto": 0 }] } ')
     
@@ -113,18 +111,15 @@ function AddPedidoItem(id) {
         success: function (xhr) {
 
             FecharModal();
-            alert('Pedido cadastrado com sucesso!')
+            Notificar(1, 'Tudo Certo!', 'Pedido cadastrado com sucesso!')
 
         },
         error: function (xhr) {
-            $('#conteudoModalGenerico').html("Algo deu errado!" + xhr);
-            $('#modalGenerico').modal('show');
+            Notificar(3, 'Ops! Algo deu errado.', 'Motivo' + xhr)
         }
     });
 }
 
-
-//function MontarPedido()
 
 
 

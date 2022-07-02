@@ -63,7 +63,7 @@
                         <input asp-for="@item.Produto.Nome" value="@item.Produto.Nome" readonly class="border-0">
                     </td>
                     <td class="col-md-2 text-center">
-                        <input asp-for="@item.Produto.Promocao.Descricao" value="@item.Produto.Promocao.Descricao" class="">
+                        @*<input asp-for="@item.Produto.Promocao.Descricao" value="@item.Produto?.Promocao.Descricao" class="">*@
                     </td>
                     <td class="col-md-1 text-center">
                         <input asp-for="@item.QuantidadeProduto" value="@item.QuantidadeProduto"  class="text-center">

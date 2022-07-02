@@ -10,6 +10,15 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/solid.css" integrity="sha384-TbilV5Lbhlwdyc4RuIV/JhD8NR+BfMrvz4BL5QFa2we1hQu6wvREr3v6XSRfCTRp" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/fontawesome.css" integrity="sha384-ozJwkrqb90Oa3ZNb+yKFW2lToAWYdTiF1vt8JiH5ptTGHTGcN7qdoR1F95e0kYyG" crossorigin="anonymous">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css" />
+
+
+
+    
+
+
     <meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin">
 </head>
 <body>
@@ -60,17 +69,30 @@
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
+        <div class="alert" id="notificador" style="display:none;">
+            <strong id="tipoMsg"></strong>:<span id="textoMsg"></span>
+        </div>
     </div>
 
     <footer class="border-top footer text-muted">
+
         <div class="container">
             &copy; 2021 - SoftShop - <a asp-area="" asp-controller="Home" asp-action="Privacy">Quem Somos</a>
 
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    @*
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>*@
+    <script src="https://code.jquery.com/jquery-3.5.1.js" asp-append-version="true"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js" asp-append-version="true"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js" asp-append-version="true"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+
+
+
+
     @RenderSection("Scripts", required: false)
 
 </body>
@@ -80,6 +102,25 @@
             <div id="conteudoModalGenerico">novo teste<br>novo teste<br>novo teste<br>novo teste<br></div>
 
 
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="height:20;">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Deseja excluir o registro
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
         </div>
     </div>
 </div>

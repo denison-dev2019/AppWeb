@@ -23,7 +23,14 @@ namespace AppWeb.Servicos.Dtos.Cadastro
         [DataMember]
         public decimal Preco { get; set; }
         [DataMember]
+        public decimal PercentualVenda { get; set; }
+        [DataMember]
         public int PromocaoId { get; set; }
+        [DataMember]
+        public decimal PrecoFinal { get; set; }
+        [DataMember]
+        public int? FornecedorId { get; set; }
+
 
     }
 
@@ -37,7 +44,13 @@ namespace AppWeb.Servicos.Dtos.Cadastro
         [DataMember]
         public decimal Preco { get; set; }
         [DataMember]
+        public decimal PercentualVenda { get; set; }
+        [DataMember]
         public int PromocaoId { get; set; }
+        [DataMember]
+        public decimal PrecoFinal { get; set; }
+        [DataMember]
+        public int? FornecedorId { get; set; }
     }
 
     [DataContract]

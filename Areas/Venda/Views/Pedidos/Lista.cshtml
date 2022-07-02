@@ -2,15 +2,30 @@
 
 @{
     Layout = "_Layout";
-    ViewData["Title"] = "Lista";
+    ViewData["Title"] = "Pedidos";
 }
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <div class="col-8">
+            <h3>
+                Pedidos
+            </h3>
+        </div>
+        <div class="col-2 text-right breadcrumb-item">
+            <button onclick="GerarNovoPedido()" class="btn btn-success padraoButtonPerc"><i class="fas fa-plus-circle cursorLink"></i>         Novo</button>
+        </div>
+        <div class="col-2 text-right breadcrumb-item">
+            <button onclick="" class="btn btn-info padraoButtonPer"><i class="fas fa-arrow-alt-circle-down cursorLink"></i>          Atualizar </button>
+        </div>
+    </ol>
+</nav>
+<div class="row">
 
-<h1>Lista</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+</div>
+<br>
+<br>
+<table class="table table-sm  table-hover tableGeral">
     <thead>
         <tr>
             <th>
@@ -20,13 +35,20 @@
                 @Html.DisplayNameFor(model => model.Valor)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Cliente)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataPedido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+
+            <th></th>
+            <th></th>
             <th></th>
         </tr>
+
     </thead>
     <tbody>
         @foreach (var item in Model)
@@ -39,18 +61,48 @@
                     @Html.DisplayFor(modelItem => item.Valor)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Status)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.Cliente)
                 </td>
                 <td>
-                    @Html.ActionLink("Alterar", "Editar", new { item.Id }) |
-                    @Html.ActionLink("Detalhes", "Detalhar", new { item.Id }) |
-                    @Html.ActionLink("Excluir", "Delete", new { item.Id })
+                    @Html.DisplayFor(modelItem => item.DataPedido)
+                </td>
+                <td>
+                    @if (@item.DataPagamento != DateTime.MinValue)
+                    {
+                        <i class="fas fa-circle text-warning cursorLink" data-toggle="tooltip" title="@item.DataPagamento"></i>
+                    }
+                    else
+                    {
+                        <i class="fas fa-circle text-warning cursorLink"></i>
+                    }
+
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+
+                <td>
+                    <span onclick="DetalharPedido('@item.Id')" data-toggle="tooltip" data-placement="right" title="Ver este Pedido">
+                        <i class="fas fa-eye text-info cursorLink"></i>
+                    </span>
+                </td>
+                <td>
+                    <span onclick="EditarPedido('@item.Id')" data-toggle="tooltip" data-placement="right" title="Editar este Pedido">
+                        <i class="fas fa-edit text-secondary cursorLink"></i>
+                    </span>
+                </td>
+                <td>
+                    <span onclick="ExcluirPedido('@item.Id')" data-toggle="tooltip" data-placement="right" title="Excluir este Pedido">
+                        <i class="fas fa-trash-alt text-danger cursorLink"></i>
+                    </span>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        Launch demo modal
+                    </button>
+
+
                 </td>
             </tr>
         }
-    </tbody>
+    
+</tbody>
 </table>
+<script type="text/javascript" src="~/js/Areas/Vendas/Pedidos/Index.js"></script>
 

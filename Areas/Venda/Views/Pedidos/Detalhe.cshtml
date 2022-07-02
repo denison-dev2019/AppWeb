@@ -6,104 +6,202 @@
 }
 
 <div class="row col-sm-12">
-    <h3>Detalhamento do Pedido @Html.DisplayNameFor(model => model.Id)  @Html.DisplayFor(model => model.Id)</h3>
-    <hr />
-    <table class="col-sm-12">
-        <thead>
-            <tr class="row col-sm-12">
-                <th class="col-sm-2 text-center">
-                    @Html.DisplayNameFor(model => model.Valor)
-                </th>
-                <th class="col-sm-2 text-center">
-                    @Html.DisplayNameFor(model => model.Status)
-                </th>
-                <th class="col-sm-3 text-center">
-                    @Html.DisplayNameFor(model => model.FormaPagamento)
-                </th>
-                <th class="col-sm-3 text-center">
-                    @Html.DisplayNameFor(model => model.Cliente.Cep)
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            
-                <tr class="row col-sm-12">
+    <div class="container px-4 p-3 border bg-light text-center">
+        <h5 class="">DETALHAMENTO PEDIDO @Html.DisplayNameFor(model => model.Id)  <span class="text-primary">@Html.DisplayFor(model => model.Id)</span></h5>
+    </div>
+
+    <div class="container px-4 p-3 border bg-light">
+        <table class="col-sm-12" border="0">
+            <thead>
+                <tr class="row alert-primary">
+                    <th class="col-sm-2 text-center">
+                        @Html.DisplayNameFor(model => model.Valor)
+                    </th>
+                    <th class="col-sm-2 text-center">
+                        @Html.DisplayNameFor(model => model.DataPedido)
+                    </th>
+                    <th class="col-sm-2 text-center">
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
+                    <th class="col-sm-2 text-center">
+                        @Html.DisplayNameFor(model => model.DataPagamento)
+                    </th>
+                    <th class="col-sm-2 text-left">
+                        @Html.DisplayNameFor(model => model.FormaPagamento)
+                    </th>
+                    <th class="col-sm-2 text-left ">
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="row">
                     <td class="col-sm-2 text-right">
                         @Html.DisplayFor(model => model.Valor)
                     </td>
                     <td class="col-sm-2 text-center">
+                        @Html.DisplayFor(model => model.DataPedido)
+                    </td>
+                    <td class="col-sm-2 text-center">
                         @Html.DisplayFor(model => model.Status)
                     </td>
-                    <td class="col-sm-3 text-center">
+                    <td class="col-sm-2 text-center">
+                        @Html.DisplayFor(model => model.DataPagamento)
+                    </td>
+                    <td class="col-sm-2 text-left ">
                         @Html.DisplayFor(model => model.FormaPagamento)
                     </td>
-                    <td class="col-sm-3 text-center">
-                        @Html.DisplayFor(model => model.Cliente.Cep)
+                    <td class="col-sm-2 text-left ">
+                    </td>
+
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row col-sm-12">
+    <div class="container px-4 p-3 border bg-light">
+        <table class="col-sm-12" border="0">
+            <thead>
+                <tr class="row alert-secondary">
+                    <th class="col-sm-12 text-center">
+                        DADOS CLIENTE
+                    </th>
+                </tr>
+                <tr class="row">
+                    <td class="col-sm-1 text-right font-weight-bold">
+                        @Html.DisplayNameFor(model => model.Cliente.Nome):
+                    </td>
+                    <td class="col-sm-3 text-left">
+                        @Model.Cliente.Nome
+                    </td>
+                    <td class="col-sm-1 text-right font-weight-bold">
+                        @Html.DisplayNameFor(model => model.Cliente.Celular):
+                    </td>
+                    <td class="col-sm-1 text-left">
+                        @Model.Cliente.Celular
+                    </td>
+                    <td class="col-sm-2 text-right font-weight-bold">
+                        @Html.DisplayNameFor(model => model.Cliente.TelefoneFixo):
+                    </td>
+                    <td class="col-sm-2 text-left">
+                        @Model.Cliente.TelefoneFixo
+                    </td>
+                    <td class="col-sm-1 text-right font-weight-bold">
+                        @Html.DisplayNameFor(model => model.Cliente.Cep):
+                    </td>
+                    <td class="col-sm-1 text-left">
+                        @Model.Cliente.Cep
                     </td>
                 </tr>
-            
-        </tbody>
-    </table>
+                <tr class="row">
+                    <td class="col-sm-1 text-right font-weight-bold">
+                        @Html.DisplayNameFor(model => model.Cliente.Endereco):
+                    </td>
+                    <td class="col-sm-3 text-left">
+                        @Model.Cliente.Endereco
+                    </td>
+                    <td class="col-sm-1 text-right font-weight-bold">
+                        @Html.DisplayNameFor(model => model.Cliente.Numero):
+                    </td>
+                    <td class="col-sm-1 text-left">
+                        @Model.Cliente.Numero
+                    </td>
+                    <td class="col-sm-2 text-right font-weight-bold">
+                        @Html.DisplayNameFor(model => model.Cliente.Complemento):
+                    </td>
+                    <td class="col-sm-4 text-left">
+                        @Model.Cliente.Complemento
+                    </td>
+
+                </tr>
+                <tr class="row">
+                    <td class="col-sm-1 text-right font-weight-bold">
+                        @Html.DisplayNameFor(model => model.Cliente.Email):
+                    </td>
+                    <td class="col-sm-4 text-left">
+                        @Model.Cliente.Email
+                    </td>
+                </tr>
+            </thead>
+        </table>
+    </div>
 </div>
-<hr />
 <div class="row col-sm-12">
-    <h4>Itens do Pedido</h4>
+    <div class="container px-4 p-3 border bg-light">
+        <table class="col-sm-12 ">
+            <thead>
+                <tr class="row alert-success">
+                    <th class="col-sm-12 text-center">
+                        ITENS DO PEDIDO
+                    </th>
+                </tr>
+                <tr class="row  alert-success">
+                    <td class="col-sm-2 text-center">
+                        @Html.DisplayNameFor(model => model.PedidoItens.FirstOrDefault().Produto.Id)
+                    </td>
+                    <td class="col-sm-5 text-center">
+                        @Html.DisplayNameFor(model => model.PedidoItens.FirstOrDefault().Produto.Nome)
+                    </td>
 
-    <table class="col-sm-12">
+                    <td class="col-sm-1 text-center">
+                        @Html.DisplayNameFor(model => model.PedidoItens.FirstOrDefault().QuantidadeProduto)
+                    </td>
+                    <td class="col-sm-2 text-center">
+                        @Html.DisplayNameFor(model => model.PedidoItens.FirstOrDefault().ValorUnitarioProduto)
+                    </td>
+                    <td class="col-sm-2 text-center">
+                        @Html.DisplayNameFor(model => model.PedidoItens.FirstOrDefault().ValorTotalProduto)
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.PedidoItens)
+                {
+                    <tr class="row ">
+                        <td class="col-sm-2 text-center">
+                            @item.Produto.Id
+                        </td>
+                        <td class="col-sm-5 text-center">
+                            @item.Produto.Nome
+                        </td>
 
-        <thead>
-            <tr class="row col-sm-12">
-                <th class="col-sm-3 text-center">
-                    @Html.DisplayNameFor(model => model.PedidoItens.FirstOrDefault().Produto.Nome)
-                </th>
-                <th class="col-sm-2 text-center">
-                    @Html.DisplayNameFor(model => model.PedidoItens.FirstOrDefault().Produto.Promocao)
-                </th>
-                <th class="col-sm-1 text-center">
-                    @Html.DisplayNameFor(model => model.PedidoItens.FirstOrDefault().QuantidadeProduto)
-                </th>
-                <th class="col-sm-3 text-center">
-                    @Html.DisplayNameFor(model => model.PedidoItens.FirstOrDefault().ValorUnitarioProduto)
-                </th>
-                <th class="col-sm-3 text-center">
-                    @Html.DisplayNameFor(model => model.PedidoItens.FirstOrDefault().ValorTotalProduto)
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.PedidoItens)
-            {
-            <tr class="row col-sm-12">
-                <td class="col-sm-3 text-center">
-                    @item.Produto.Nome
-                </td>
-                <td class="col-sm-2 text-center">
-                    @item.Produto.Promocao.Descricao
-                </td>
-                <td class="col-sm-1 text-center">
-                    @item.QuantidadeProduto
-                </td>
-                <td class="col-sm-3 text-center">
-                    @item.ValorUnitarioProduto
-                </td>
-                <td class="col-sm-3 text-center">
-                    @item.ValorTotalProduto
-                </td>
-
-
-            </tr>
-            }
+                        <td class="col-sm-1 text-center">
+                            @item.QuantidadeProduto
+                        </td>
+                        <td class="col-sm-2 text-center">
+                            @item.ValorUnitarioProduto
+                        </td>
+                        <td class="col-sm-2 text-center">
+                            @item.ValorTotalProduto
+                        </td>
+                    </tr>
+                }
             </tbody>
-    </table>
+            <tfoot>
+                <tr class="row alert-success">
+                    <td class="col-sm-2 text-center">
+                    </td>
+                    <td class="col-sm-5 text-center">
+                    </td>
+
+                    <td class="col-sm-1 text-center">
+                        @Model.PedidoItens.Sum(x => x.QuantidadeProduto)
+                    </td>
+                    <td class="col-sm-2 text-center">
+                        @Model.PedidoItens.Sum(x => x.ValorUnitarioProduto)
+                    </td>
+                    <td class="col-sm-2 text-center">
+                        @Model.PedidoItens.Sum(x => x.ValorTotalProduto)
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
 </div>
-<br>
-<br>
-<br>
 <br>
 <div>
-    @Html.ActionLink("Alterar", "Editar", "venda/pedidos/alterar", new { Model.Id })
-    <a class="nav-link text-dark" asp-area="" asp-controller="pedidos" asp-action="editar">
-        Editar
-    </a>
-    <a class="col-sm-2 btn btn-success padraoButtonPerc" asp-area="" asp-controller="produtos" asp-action="listar">Continuar Comprando</a>
+    <a class="col-sm-2 btn btn-outline-danger padraoButtonPerc" asp-area="" asp-controller="produtos" asp-action="listar"><i class="fas fa-trash-alt"></i> Cancelar Pedido</a>
+    <a class="col-sm-2 btn btn-outline-primary padraoButtonPerc" asp-area="" asp-controller="produtos" asp-action="listar"><i class="fas fa-edit"></i> Alterar Pedido</a>
+    <a class="col-sm-2 btn btn-outline-success padraoButtonPerc" asp-area="" asp-controller="produtos" asp-action="listar"><i class="fas fa-circle-notch"></i> Finalizar Pedido</a>
 </div>
